@@ -33,5 +33,4 @@ jobs:
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: dist/learnalgs/browser # The folder the action should deploy.
-        token: ${{ secrets.GITHUB_TOKEN }} # Token used for authentication
         clean: true # Automatically remove deleted files from the deployment
