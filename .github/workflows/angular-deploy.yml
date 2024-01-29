@@ -1,0 +1,37 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Use the Node.js version that matches your development environment
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+
+    - name: Install npm dependencies
+      run: npm install
+
+    - name: Build Project
+      run: ng build --prod --base-href "https://clementvh.github.io/learnalgs/"
+      # Replace [username] with your GitHub username and [repo] with your repository name
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: dist/learnalgs/browser # The folder the action should deploy.
+        token: ${{ secrets.GITHUB_TOKEN }} # Token used for authentication
+        clean: true # Automatically remove deleted files from the deployment
