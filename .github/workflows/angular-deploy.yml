@@ -16,7 +16,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # Use the Node.js version that matches your development environment
+        node-version: '20' # Use the Node.js version that matches your development environment
 
     - name: Install Angular CLI
       run: npm install -g @angular/cli
@@ -25,7 +25,7 @@ jobs:
       run: npm install
 
     - name: Build Project
-      run: ng build --prod --base-href "https://clementvh.github.io/learnalgs/"
+      run: ng build --base-href "https://clementvh.github.io/learnalgs/"
       # Replace [username] with your GitHub username and [repo] with your repository name
 
     - name: Deploy to GitHub Pages
